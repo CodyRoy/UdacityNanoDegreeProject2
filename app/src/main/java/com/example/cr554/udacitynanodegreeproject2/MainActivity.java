@@ -43,15 +43,28 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.team_one_score);
         String asString = Integer.toString(teamOneScore);
         textView.setText(asString);
-        //will update the score for team 1
-        //called from the increment_team_one and decrement_team_one functions
+        winning_team_display();
     }
     public void display_team_two_score(){
         TextView textView = (TextView) findViewById(R.id.team_two_score);
         String asString = Integer.toString(teamTwoScore);
         textView.setText(asString);
-        //willupdate the score for team 2
-        //called from the increment_team_two and decrement_team_two functions
+        winning_team_display();
+    }
+    public void winning_team_display(){
+        TextView textView = (TextView) findViewById(R.id.current_leader);
+        String currentLeader;
+        if(teamOneScore>teamTwoScore){
+            currentLeader = getString(R.string.team_one_winning);
+        }
+        else if(teamOneScore<teamTwoScore){
+            currentLeader = getString(R.string.team_two_winning);
+        }
+        else
+        {
+            currentLeader = getString(R.string.is_tie);
+        }
+        textView.setText(currentLeader);
     }
 
 }
